@@ -1,0 +1,1583 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nebula.EDC.API</name>
+    </assembly>
+    <members>
+        <member name="T:Nebula.EDC.API.Authorization.PermissionAuthorizationHandler">
+            <summary>
+            权限验证策略鉴别
+            </summary>
+        </member>
+        <member name="M:Nebula.EDC.API.Authorization.PermissionAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Nebula.EDC.API.Authorization.PolicyRequirement)">
+            <summary>
+            相当于授权验证过滤器,不过和过滤器还是有区别, Core3.1用法, context中不带有完整HttpContext 使用时注意
+            </summary>
+            <param name="context">HandlerContext</param>
+            <param name="requirement">AddPolicy("Permission"时传入的参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nebula.EDC.API.Authorization.TokenAuthenticationService">
+            <summary>
+            验证用户名密码,并生成 JWT Token  
+            </summary>
+        </member>
+        <member name="T:Nebula.EDC.API.Authorization.UserService">
+            <summary>
+            用户验证相关Servic
+            </summary>
+        </member>
+        <member name="M:Nebula.EDC.API.Authorization.UserService.IsValid(System.String,System.String)">
+            <summary>
+            验证用户名密码
+            </summary>
+            <param name="uid"></param>
+            <param name="password"></param>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nebula.EDC.API.Authorization.CommonService">
+            <summary>
+            用户验证相关Servic
+            </summary>
+        </member>
+        <member name="T:Nebula.EDC.API.Authorization.PaperlessService">
+            <summary>
+            用户验证相关Servic
+            </summary>
+        </member>
+        <member name="T:Nebula.EDC.API.Controllers.AuthController">
+            <summary>
+            权限验证相关
+            </summary>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.AuthController.Login(Nebula.EDC.API.Authorization.UserService,Nebula.EDC.API.Controllers.PostUser)">
+            <summary>
+            认证用户
+            注意 1.请求只支持Post方式
+                2.请求头需要添加 : Content-Type application/json
+                3.请求内容使用Json格式 : {"uid":"admin","pwd":"1"}
+                4.token中会包含用户权限
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.GetAllMenue">
+            <summary>
+            获得所有菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.SaveMenue(Nebula.EDC.API.Models.WebMenu)">
+            <summary>
+            保存菜单
+            </summary>
+            <param name="menu"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.SaveUserGroupPermissionTree(Nebula.EDC.API.Controllers.UpdateGroupPermissionTree)">
+            <summary>
+            保存权限
+            </summary>
+            <param name="Permission"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.GetUserGroupPermissionTree(System.String)">
+            <summary>
+            权限设置页面使用
+            </summary>
+            <param name="group_id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.GetAllUser(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            用户管理，获得所有用户
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.SavePermissionTree(Nebula.EDC.API.Controllers.UpdatePermissionTree)">
+            <summary>
+            保存权限
+            </summary>
+            <param name="Permission"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.GetPermissionTree(System.String)">
+            <summary>
+            权限设置页面使用
+            </summary>
+            <param name="user_id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.GetAllI18n">
+            <summary>
+            获得所有语言字段
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.SaveI18n(Nebula.EDC.API.Models.WebI18n)">
+            <summary>
+            保存语言修改
+            </summary>
+            <param name="menu"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Controllers.SystemManagementController.GetI18nByLang(System.String)">
+            <summary>
+            根据语言选项获得i18n描述信息
+            </summary>
+            <param name="lang"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.AppSettings.LogFileLevel">
+            <summary>
+            日志文件过滤等级
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.ConnInfo.Basic">
+            <summary>
+            基本信息,服务描述,心跳包等
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.ConnInfo.Log">
+            <summary>
+            日志库
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.ConnInfo.Msg">
+            <summary>
+            消息库
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.ConnInfo.Signal">
+            <summary>
+            广播库
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.EqpModel.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.EqpModel.MODEL_TYPE">
+            <summary>
+            MODEL_TYPE
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Nebula.EDC.API.Models.WebMenu.MENU_ID" -->
+        <!-- Badly formed XML comment ignored for member "P:Nebula.EDC.API.Models.WebMenu.PARENT_ID" -->
+        <member name="P:Nebula.EDC.API.Models.WebMenu.VIEW_TYPE">
+            <summary>
+            类型，API或MENU
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Nebula.EDC.API.Models.WebMenu.NAME" -->
+        <!-- Badly formed XML comment ignored for member "P:Nebula.EDC.API.Models.WebMenu.URL" -->
+        <member name="P:Nebula.EDC.API.Models.WebMenu.VIEW_URL">
+            <summary>
+            视图链接
+            当VIEW_TYPE是API时， 此项为ACTION
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Nebula.EDC.API.Models.WebMenu.ICON" -->
+        <member name="P:Nebula.EDC.API.Models.WebMenu.UPDATE_BY">
+            <summary>
+            修改者
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.WebMenu.UPDATE_DATE">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Nebula.EDC.API.Models.WebMenu.INDEX" -->
+        <member name="P:Nebula.EDC.API.Models.WebMenu.IS_SHOW">
+            <summary>
+            是否显示页面，不显示的页面即使有权限查看也将不显示
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Nebula.EDC.API.Models.WebMenu.REMARKS" -->
+        <member name="P:Nebula.EDC.API.Models.WebMenu.I18N_KEY">
+            <summary>
+            国际化Key
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.WebMenuGroup.UPDATE_BY">
+            <summary>
+            修改者
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.WebMenuGroup.UPDATE_DATE">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.WebMenuUser.UPDATE_DATE">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:Nebula.EDC.API.Models.WebMenuUser.UPDATE_BY">
+            <summary>
+            修改者
+            </summary>
+        </member>
+        <member name="M:Nebula.EDC.API.Startup.Main(System.String[])">
+            <summary>
+            入口
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.FunctionUtil.ConnectState(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            连接共享文件
+            </summary>
+            <param name="path">共享文件地址</param>
+            <param name="userName">用户名</param>
+            <param name="passWord">密码</param>
+            <returns>true:连接成功 false:连接失败</returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.FunctionUtil.UpLoadFile2(System.String,System.String,System.String,System.String)">
+            <summary>
+            上传文件到共享文件夹
+            </summary>
+            <param name="sourceFile">本地文件</param>
+            <param name="remoteFile">远程文件</param>
+            <param name="folder">文件夹</param>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.FunctionUtil.DownLoadFile(System.String,System.String)">
+            <summary>
+            下载远程文件到本地
+            </summary>
+            <param name="URL">远程文件完整路径</param>
+            <param name="DIR">本地文件夹路径</param>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.FunctionUtil.GetPathNet(System.String)">
+            <summary>
+            获取共享文件指定路径的
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.MD5Util.Base64Encrypt(System.String)">
+            <summary>
+            Base64加密
+            </summary>
+            <param name="source">明文</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.MD5Util.Base64Decrypt(System.String)">
+            <summary>
+            Base64解密
+            </summary>
+            <param name="source">密文</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.MD5Util.Get32MD5One(System.String)">
+            <summary>
+            32位MD5加密
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.MD5Util.Get16MD5One(System.String)">
+            <summary>
+            16位MD5加密
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.MD5Util.AesEncrypt(System.String)">
+            <summary>
+            AES加密
+            </summary>
+            <param name="value"></param>
+            <param name="key"></param>
+            <param name="iv"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.MD5Util.AesDecrypt(System.String)">
+            <summary>
+            AES解密
+            </summary>
+            <param name="value"></param>
+            <param name="key"></param>
+            <param name="iv"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.TabletoHtml.GetHtmlTable(System.Collections.Generic.Dictionary{System.String,System.Data.DataTable},System.String)">
+            <summary>
+            /转换成HTML表格格式发送 
+            </summary>
+            <param name="dts">key是标题，value是表格</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.API.Utilities.TabletoHtml.GetEchartHtml">
+            <summary>
+            转换成HTML echart的页面
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.Common.CommonUtils.RetryExecute``1(System.Func{``0},System.TimeSpan,System.Int32)">
+            <summary>
+            重试执行指定的方法，默认执行3次.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="func">重试的方法</param>
+            <param name="retryInterval">间隔时间</param>
+            <param name="retryCount">执行次数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EDC.Utilities.Base64Util.SaveImage(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            将base64转成图片
+            </summary>
+            <param name="Strbase64">base64数据</param>  
+            <param name="Fileurl">文件存放路径存(/UploadFiles/模块）</param>
+            <param name="FileSuffix">图片后缀（不存在则取base64类型后缀,如果base64头部不存在data:image/jpg(类型)返回空）</param> 
+            <param name="Bol">是否默认盘（Fileurl否必填盘）</param>
+            <param name="GuridFileName">图片名称(默认GUID生成)</param> 
+            <returns></returns>
+            D:\Code\WebManagers\Web\Ayhl\API\VideoManageApi\UploadFiles\
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Nebula.EDC.Utilities.EMailUtil.SendMail(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.Net.Mail.SendCompletedEventHandler)" -->
+        <!-- Badly formed XML comment ignored for member "M:Nebula.EDC.Utilities.EMailUtil.SendHtmlBodyMail(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.String,System.Net.Mail.SendCompletedEventHandler)" -->
+        <member name="M:Nebula.EAP.Core.Common.Utilities.CommUtilities.DeserializeFromBinary``1(System.Byte[])">
+            <summary>
+            从Byte数组反序列化为对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.CommUtilities.SerializeFromBinary``1(``0)">
+            <summary>
+            将对象转换为Byte数组
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.CommUtilities.GetWeekIndexByYear(System.DateTime,System.Int32@)">
+            <summary>
+            获取当前时间是当年的第几周 周日到周六
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.CommUtilities.GetWeekOfYear(System.DateTime)">
+            <summary>
+            获取当前时间是当年的第几周 周一到周日
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Nebula.EAP.Core.Common.Utilities.ExtendEnvironment.ActiveThreadCount">
+            <summary>
+            返回线程池中活动的线程数
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Core.Common.Utilities.ExtendEnvironment.MaxWorkerThreads">
+            <summary>
+            获得最大的线程数量
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Core.Common.Utilities.ExtendEnvironment.FreeWorkerThreads">
+            <summary>
+            当前可用的线程数量
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Core.Common.Utilities.ExtendEnvironment.LocalIP">
+            <summary>
+            本机IP
+            </summary>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.TimeUtil.GetWorkDay(System.DateTime,System.DateTime)">
+            <summary>
+            get day count
+            </summary>
+            <param name="beginDate"></param>
+            <param name="endDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.TimeUtil.GetMonthDifference(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            get Month count
+            </summary>
+            <param name="beginDate"></param>
+            <param name="endDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.TimeUtil.GetNowDateTime_20">
+            <summary>
+            get Current DateTime (yyyyMMddHHmmssffffff)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.TimeUtil.GetNowDateTime">
+            <summary>
+            get Current DateTime (yyyyMMddHHmmssfff)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.TimeUtil.GetNowDateTIme_12">
+            <summary>
+            get Current DateTime (yyMMddHHmmss)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Common.Utilities.TimeUtil.GetNowDateTIme_16">
+            <summary>
+            get Current DateTime (yyMMddHHmmssff)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.ControlCenter.Services.ChatHub.ReceiveMessage(System.String)">
+            <summary>
+            用来接收客户端发送到服务器的数据
+            </summary>
+            <param name="user"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.ControlCenter.Services.ChatHub.OnDisconnectedAsync(System.Exception)">
+            <summary>
+            客户端断开连接后调用
+            </summary>
+            <param name="stopcalled"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper">
+            <summary>
+            SFTP操作类
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.Connected">
+            <summary>
+            SFTP连接状态
+            </summary>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            构造
+            </summary>
+            <param name="ip">IP</param>
+            <param name="port">端口</param>
+            <param name="user">用户名</param>
+            <param name="pwd">密码</param>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.Connect">
+            <summary>
+            连接SFTP
+            </summary>
+            <returns>true成功</returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.Disconnect">
+            <summary>
+            断开SFTP
+            </summary> 
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.Put(System.String,System.String)">
+            <summary>
+            SFTP上传文件
+            </summary>
+            <param name="localPath">本地路径</param>
+            <param name="remotePath">远程路径</param>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.Get(System.String,System.String)">
+            <summary>
+            SFTP获取文件
+            </summary>
+            <param name="remotePath">远程路径</param>
+            <param name="localPath">本地路径</param>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.Delete(System.String)">
+            <summary>
+            删除SFTP文件 
+            </summary>
+            <param name="remoteFile">远程路径</param>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.GetFileList(System.String,System.String)">
+            <summary>
+            获取SFTP文件列表
+            </summary>
+            <param name="remotePath">远程目录</param>
+            <param name="fileSuffix">文件后缀</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.Move(System.String,System.String)">
+            <summary>
+            移动SFTP文件
+            </summary>
+            <param name="oldRemotePath">旧远程路径</param>
+            <param name="newRemotePath">新远程路径</param>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.FileExists(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Path"></param>
+        </member>
+        <member name="M:Nebula.EAP.Core.Scenario.Utilities.SFTPHelper.CreateFolder(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Path"></param>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.STRIP_ID">
+            <summary>
+            STRIP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.LOT_ID">
+            <summary>
+            LOT_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.EQP_ID">
+            <summary>
+            EQP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.GOOD_QTY">
+            <summary>
+            GOOD_QTY
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.REJECT_QTY">
+            <summary>
+            REJECT_QTY
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.DUMMY_QTY">
+            <summary>
+            DUMMY_QTY
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.X_OUT_QTY">
+            <summary>
+            X_OUT_QTY
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.CURR_PASS">
+            <summary>
+            CURR_PASS
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.TOTAL_PASS">
+            <summary>
+            TOTAL_PASS
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.EVENT_USER">
+            <summary>
+            EVENT_USER
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.EVENT_NAME">
+            <summary>
+            EVENT_NAME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.ViewEntity.StripEntity.EVENT_TIME">
+            <summary>
+            EVENT_TIME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_ALARM_MESSAGE_SHOW.ALARM_ID">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_CHECK_SPEC.FORM_TYPE">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.USER_ID">
+            <summary>
+            USER_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.USER_NAME">
+            <summary>
+            USER_NAME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.GROUP_ID">
+            <summary>
+            GROUP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.PASSWORD">
+            <summary>
+            PASSWORD
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.EMAIL">
+            <summary>
+            EMAIL
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.DEPT_ID">
+            <summary>
+            DEPT_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.FAC_ID">
+            <summary>
+            FAC_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.SITE_ID">
+            <summary>
+            SITE_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.POSITION">
+            <summary>
+            POSITION
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.ATTEND_ID">
+            <summary>
+            ATTEND_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_EES_USER.REMARK">
+            <summary>
+            REMARK
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_FORM_PRESERVE.EQP_TYPE">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_FORM_PRESERVE_HIST.EQP_TYPE">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.BUMPMDC_SYS_CONFIG.SYSTEM_ID">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EDC_PAPERLESS_CHECK_LIST.LOT_ID">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EDC_PAPERLESS_CHECK_LIST_HIST.GUID">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EDC_PAPERLESS_CHECK_RELATION.EQP_TYPE">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EDC_PAPERLESS_CHECK_RELATION_HIST.GUID">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EDC_PAPERLESS_CHECK_SPC_LIST.STATE_GUID">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EDC_PAPERLESS_CHECK_SPEC.EQP_TYPE">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EDC_PAPERLESS_CHECK_SPEC_DRAFT.EQP_TYPE">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.USER_ID">
+            <summary>
+            USER_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.USER_NAME">
+            <summary>
+            USER_NAME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.GROUP_ID">
+            <summary>
+            GROUP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.PASSWORD">
+            <summary>
+            PASSWORD
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.EMAIL">
+            <summary>
+            EMAIL
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.DEPT_ID">
+            <summary>
+            DEPT_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.FAC_ID">
+            <summary>
+            FAC_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.SITE_ID">
+            <summary>
+            SITE_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.POSITION">
+            <summary>
+            POSITION
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.ATTEND_ID">
+            <summary>
+            ATTEND_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EES_USER.REMARK">
+            <summary>
+            REMARK
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.EQP_ID">
+            <summary>
+            EQP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.EQP_OBJ_ID">
+            <summary>
+            EQP_OBJ_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.EQP_TYPE">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.UPPER_EQP_ID">
+            <summary>
+            UPPER_EQP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.UPPER_EQP_OBJ_ID">
+            <summary>
+            UPPER_EQP_OBJ_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.FAC_ID">
+            <summary>
+            FAC_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.AREA_ID">
+            <summary>
+            AREA_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.EQP_DESC">
+            <summary>
+            EQP_DESC
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.EQP_STATE">
+            <summary>
+            EQP_STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.CONTROL_STATE">
+            <summary>
+            CONTROL_STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.STATE_CODE">
+            <summary>
+            STATE_CODE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.RECIPE_ID">
+            <summary>
+            RECIPE_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.MAT_ID">
+            <summary>
+            MAT_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.MAT_TYPE">
+            <summary>
+            MAT_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.MAINT_FLAG">
+            <summary>
+            MAINT_FLAG
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.REPAIRE_FLAG">
+            <summary>
+            REPAIRE_FLAG
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.BUFFER_OUT">
+            <summary>
+            BUFFER_OUT
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.BUFFER_OUT_TYPE">
+            <summary>
+            BUFFER_OUT_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.EVENT_NAME">
+            <summary>
+            EVENT_NAME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.EVENT_TIME">
+            <summary>
+            EVENT_TIME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.LOT_ID">
+            <summary>
+            LOT_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.OEE">
+            <summary>
+            OEE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.ROWS">
+            <summary>
+            ROWS
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.COLUMNS">
+            <summary>
+            COLUMNS
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.BLOCK">
+            <summary>
+            BLOCK
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.CUSTCODE">
+            <summary>
+            CUSTCODE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP.DIEPART">
+            <summary>
+            DIEPART
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_EVENT.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_EVENT.CEID">
+            <summary>
+            CEID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_EVENT.CEID_DESC">
+            <summary>
+            CEID_DESC
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_EVENT_LINK.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_EVENT_LINK.CEID">
+            <summary>
+            CEID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_EVENT_LINK.RPTID">
+            <summary>
+            RPTID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_EVENT_LINK.RPTID_INDEX">
+            <summary>
+            RPTID_INDEX
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_EVENT_LINK.RPTID_DESC">
+            <summary>
+            RPTID_DESC
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.TIME_KEY">
+            <summary>
+            TIME_KEY
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.EQP_ID">
+            <summary>
+            EQP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.EQP_OBJ_ID">
+            <summary>
+            EQP_OBJ_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.EQP_TYPE">
+            <summary>
+            EQP_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.UPPER_EQP_ID">
+            <summary>
+            UPPER_EQP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.UPPER_EQP_OBJ_ID">
+            <summary>
+            UPPER_EQP_OBJ_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.FAC_ID">
+            <summary>
+            FAC_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.AREA_ID">
+            <summary>
+            AREA_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.EQP_DESC">
+            <summary>
+            EQP_DESC
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.EQP_PREV_STATE">
+            <summary>
+            EQP_PREV_STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.EQP_STATE">
+            <summary>
+            EQP_STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.CONTROL_STATE">
+            <summary>
+            CONTROL_STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.STATE_CODE">
+            <summary>
+            STATE_CODE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.RECIPE_ID">
+            <summary>
+            RECIPE_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.MAT_ID">
+            <summary>
+            MAT_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.MAT_TYPE">
+            <summary>
+            MAT_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.MAINT_FLAG">
+            <summary>
+            MAINT_FLAG
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.REPAIR_FLAG">
+            <summary>
+            REPAIR_FLAG
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.BUFFER_OUT">
+            <summary>
+            BUFFER_OUT
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.BUFFER_OUT_TYPE">
+            <summary>
+            BUFFER_OUT_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.EVENT_NAME">
+            <summary>
+            EVENT_NAME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.EVENT_TIME">
+            <summary>
+            EVENT_TIME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.LOT_ID">
+            <summary>
+            LOT_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.OEE">
+            <summary>
+            OEE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.ROWS">
+            <summary>
+            ROWS
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.COLUMNS">
+            <summary>
+            COLUMNS
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.BLOCK">
+            <summary>
+            BLOCK
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_HIST.CUSTCODE">
+            <summary>
+            CUSTCODE
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Nebula.EAP.Models.EAP.EQP_HIST.DIEPART" -->
+        <member name="P:Nebula.EAP.Models.EAP.EQP_MODEL.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_MODEL.MODEL_TYPE">
+            <summary>
+            MODEL_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_MODEL.MODEL_DESC">
+            <summary>
+            MODEL_DESC
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_MODEL.VENDOR_ID">
+            <summary>
+            VENDOR_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_MODEL.VENDOR_DESC">
+            <summary>
+            VENDOR_DESC
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_MODEL.RECIPE_PROD_PATH">
+            <summary>
+            RECIPE_PROD_PATH
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_MODEL.RECIPE_ENG_PATH">
+            <summary>
+            RECIPE_ENG_PATH
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_REPORT_LINK.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_REPORT_LINK.RPTID">
+            <summary>
+            RPTID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_REPORT_LINK.SVID">
+            <summary>
+            SVID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_REPORT_LINK.SVID_INDEX">
+            <summary>
+            SVID_INDEX
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_REPORT_LINK.SVID_DESC">
+            <summary>
+            SVID_DESC
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_STATE_SPEC.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_STATE_SPEC.STATE_CODE">
+            <summary>
+            STATE_CODE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_STATE_SPEC.EQP_STATE">
+            <summary>
+            EQP_STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_STATE_SPEC.MES_STATE">
+            <summary>
+            MES_STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_STATE_SPEC.STATE">
+            <summary>
+            STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_STATE_SPEC.STATE_DESC">
+            <summary>
+            STATE_DESC
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_STATE_SPEC.PRIORITY">
+            <summary>
+            PRIORITY
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.EQP_STATE_SPEC.STATE_DUR_LIMIT">
+            <summary>
+            STATE_DUR_LIMIT
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.RECIPE_ID">
+            <summary>
+            RECIPE_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.EQP_ID">
+            <summary>
+            EQP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.MODEL_ID">
+            <summary>
+            MODEL_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.PROD_TYPE">
+            <summary>
+            PROD_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.RECIPE_VER">
+            <summary>
+            RECIPE_VER
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.PROD_ID">
+            <summary>
+            PROD_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.PROC_PKG_ID">
+            <summary>
+            PROC_PKG_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.CUST_ID">
+            <summary>
+            CUST_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.UPLOAD_EQP_ID">
+            <summary>
+            UPLOAD_EQP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.RECIPE_DATA">
+            <summary>
+            RECIPE_DATA
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.RECIPE_STATE">
+            <summary>
+            RECIPE_STATE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.UPDATE_USER">
+            <summary>
+            UPDATE_USER
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_DRAFT.UPDATE_TIME">
+            <summary>
+            UPDATE_TIME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_UNIT.EQP_ID">
+            <summary>
+            EQP_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_UNIT.RECIPE_ID">
+            <summary>
+            RECIPE_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_UNIT.RECIPE_VER">
+            <summary>
+            UNIT_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_UNIT.UPDATE_USER">
+            <summary>
+            UPDATE_USER
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.RECIPE_UNIT.UPDATE_TIME">
+            <summary>
+            UPDATE_TIME
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.SYS_CONFIG.SYSTEM_ID">
+            <summary>
+            SYSTEM_ID
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.SYS_CONFIG.CONFIG_TYPE">
+            <summary>
+            CONFIG_TYPE
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.SYS_CONFIG.CONFIG_ITEM">
+            <summary>
+            CONFIG_ITEM
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.SYS_CONFIG.CONFIG_VAL">
+            <summary>
+            CONFIG_VAL
+            </summary>
+        </member>
+        <member name="P:Nebula.EAP.Models.EAP.SYS_CONFIG.CONFIG_DESC">
+            <summary>
+            CONFIG_DESC
+            </summary>
+        </member>
+        <member name="F:Nebula.EAP.Models.EAP.EQP_SECS_CONFIG.Eisparas">
+            <summary>
+            用于Webservice接收
+            </summary>
+        </member>
+        <member name="T:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper">
+            <summary>
+            FTP操作类(FluentFTP封装)
+            </summary>
+        </member>
+        <member name="F:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.ftpClient">
+            <summary>
+            FtpClient
+            </summary>
+        </member>
+        <member name="F:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.strFtpUri">
+            <summary>
+            FTP IP地址(127.0.0.1)
+            </summary>
+        </member>
+        <member name="F:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.intFtpPort">
+            <summary>
+            FTP端口
+            </summary>
+        </member>
+        <member name="F:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.strFtpUserID">
+            <summary>
+            FTP用户名
+            </summary>
+        </member>
+        <member name="F:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.strFtpPassword">
+            <summary>
+            FTP密码
+            </summary>
+        </member>
+        <member name="F:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.intRetryTimes">
+            <summary>
+            重试次数
+            </summary>
+        </member>
+        <member name="F:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper._workingDirectory">
+            <summary>
+            FTP工作目录
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.WorkingDirectory">
+            <summary>
+            FTP工作目录
+            </summary>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.#ctor(Nebula.Next.Common.EAP.Utilities.FtpConfig)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ftpConfig">FTP配置封装</param>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.#ctor(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="host">FTP IP地址</param>
+            <param name="port">FTP端口</param>
+            <param name="username">FTP用户名</param>
+            <param name="password">FTP密码</param>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.GetFtpClient">
+            <summary>
+            创建ftp客户端
+            </summary>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.CheckPara">
+            <summary>
+            校验参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.isConnected">
+            <summary>
+            FTP是否已连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.Connect">
+            <summary>
+            连接FTP
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.DisConnect">
+            <summary>
+            断开FTP
+            </summary>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.ListDirectory(System.String,System.String)">
+            <summary>
+            取得文件或目录列表
+            </summary>
+            <param name="remoteDic">远程目录</param>
+            <param name="type">类型:file-文件,dic-目录</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.UploadFile(System.String,System.String)">
+            <summary>
+            上传单文件
+            </summary>
+            <param name="localPath">本地路径(@"D:\abc.txt")</param>
+            <param name="remoteDic">远端目录("/test")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.UploadFiles(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            上传多文件
+            </summary>
+            <param name="localFiles">本地路径列表</param>
+            <param name="remoteDic">远端目录("/test")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.DownloadFileToByte(System.String,System.Byte[]@)">
+            <summary>
+            下载单文件
+            </summary>
+            <param name="remotePath">远程路径("/test/abc.txt")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.DownloadFileToStream(System.String)">
+            <summary>
+            下载单文件
+            </summary>
+            <param name="remotePath">远程路径("/test/abc.txt")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.DownloadFile(System.String,System.String)">
+            <summary>
+            下载单文件
+            </summary>
+            <param name="localDic">本地目录(@"D:\test")</param>
+            <param name="remotePath">远程路径("/test/abc.txt")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.DownloadFiles(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            下载多文件
+            </summary>
+            <param name="localDic">本地目录(@"D:\test")</param>
+            <param name="remotePath">远程路径列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.IsFileExists(System.String)">
+            <summary>
+            判断文件是否存在
+            </summary>
+            <param name="remotePath">远程路径("/test/abc.txt")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.IsDirExists(System.String)">
+            <summary>
+            判断目录是否存在
+            </summary>
+            <param name="remotePath">远程路径("/test")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.MakeDir(System.String)">
+            <summary>
+            新建目录
+            </summary>
+            <param name="remoteDic">远程目录("/test")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.RenameFile(System.String,System.String)">
+            <summary>
+            新建目录
+            </summary>
+            <param name="remoteDic">远程目录("/test")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.Clean">
+            <summary>
+            清理
+            </summary>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.ReadFile(System.String)">
+            <summary>
+            读取文件
+            </summary>
+            <param name="remotePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FluentFtpHelper.RetryExecute``1(System.Func{``0},System.TimeSpan,System.Int32)">
+            <summary>
+            重试执行指定的方法，默认执行3次.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="func">重试的方法</param>
+            <param name="retryInterval">间隔时间</param>
+            <param name="retryCount">执行次数</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nebula.Next.Common.EAP.Utilities.FtpConfig">
+            <summary>
+            Ftp配置结构
+            </summary>
+        </member>
+        <member name="M:Nebula.Next.Common.EAP.Utilities.FtpConfig.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.str_Name">
+            <summary>
+            Ftp 标识
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.str_FtpUri">
+            <summary>
+            FTP地址
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.int_FtpPort">
+            <summary>
+            FTP端口
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.str_FtpPath">
+            <summary>
+            FTP路径(/test)
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.str_FtpUserID">
+            <summary>
+            FTP用户名
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.str_FtpPassword">
+            <summary>
+            FTP密码
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.bool_IsEncrypt">
+            <summary>
+            FTP密码是否被加密
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.int_FtpReadWriteTimeout">
+            <summary>
+            读取或写入超时之前的毫秒数。默认值为 30,000 毫秒。
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.bool_FtpUseBinary">
+            <summary>
+            true，指示服务器要传输的是二进制数据；false，指示数据为文本。默认值为true。
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.bool_FtpUsePassive">
+            <summary>
+            true，被动模式；false，主动模式(主动模式可能被防火墙拦截)。默认值为true。
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.bool_FtpKeepAlive">
+            <summary>
+            是否保持连接。
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.bool_FtpEnableSsl">
+            <summary>
+            是否启用SSL。
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.str_Describe">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.int_RetryTimes">
+            <summary>
+            重试次数
+            </summary>
+        </member>
+        <member name="P:Nebula.Next.Common.EAP.Utilities.FtpConfig.str_Ver">
+            <summary>
+            版本号
+            </summary>
+        </member>
+    </members>
+</doc>
